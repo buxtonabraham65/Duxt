@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+
+
+{% load static %}
+<script src="{% static 'js/scripts.js' %}"></script>
+
+
+{% block content %}
+
+<html lang="en">
+    <head>
+       {% load static %}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>Project - DuxtCars</title>
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+<!-- Font Awesome icons (using stylesheet version only) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+<!-- Core theme CSS (includes Bootstrap) -->
+<link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+<!-- Core theme JavaScript -->
+<script src="{% static 'js/scripts.js' %}"></script>
+
+
+
+
+    </head>
+   
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="#page-top"><img src="static\images\logo17.png" alt="..." /><font color="red">  Duxt</font><font color="#007bff">Cars</font></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="#portfolio">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'store' %}">Buy</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'rent' %}">Rent</a></li>
+
+                        <li class="nav-item"><a class="nav-link" href="{% url 'sell' %}">Sell</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'car_maintenance' %}">Car Maintenance</a></li>
+                    
+                        <li class="nav-item"><a class="nav-link" href="#CarContact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+       <!-- Masthead--> 
+<header class="masthead">
+    <div class="container">
+        <div class="masthead-subheading"><font color="red">Welcome To DuxtCars</font></div>
+        <div class="masthead-heading text-uppercase" style="color: #fff;">We Buy Sell & Rent Cars<br>
+            <h3 style="color: white;">Get a car for all occasion</h3>
+        </div>
+        <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
+    </div>
+</header>
+
+        <!-- Services-->
+        <!-- Services Section as a Carousel -->
+<!-- Services Section as a Carousel -->
+<section class="page-section" id="services">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Services</h2>
+            <h3 class="section-subheading text-muted">Our core offerings to meet your automotive needs.</h3>
+        </div>
+        
+        <!-- Bootstrap Carousel -->
+        <div id="servicesCarousel" class="carousel slide" data-bs-ride="carousel">
+            <!-- Indicators/Dots -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            </div>
+            
+            <!-- Carousel Inner -->
+            <div class="carousel-inner">
+                <!-- Slide 1: Selling Cars -->
+                <div class="carousel-item active">
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-car fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4 class="my-3">Selling Cars</h4>
+                        <p class="text-muted">Easily list your car for sale and connect with potential buyers in a hassle-free process.</p>
+                    </div>
+                </div>
+
+                <!-- Slide 2: Buying Cars -->
+                <div class="carousel-item">
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-truck fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4 class="my-3">Buying Cars</h4>
+                        <p class="text-muted">Browse through a wide range of quality cars to find the perfect vehicle for you.</p>
+                    </div>
+                </div>
+
+                <!-- Slide 3: Renting Cars -->
+                <div class="carousel-item">
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-car fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4 class="my-3">Renting Cars</h4>
+                        <p class="text-muted">Affordable and reliable car rental services for all your travel needs.</p>
+                    </div>
+                </div>
+
+                <!-- Slide 4: Car Maintenance and Fixing -->
+                <div class="carousel-item">
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-tools fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4 class="my-3">Car Maintenance and Fixing</h4>
+                        <p class="text-muted">Professional services to keep your car in top condition and ensure optimal performance.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#servicesCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#servicesCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</section>
+
+
+
+        <!-- Portfolio Grid-->
+        <section class="page-section bg-light" id="portfolio">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Our Cars Garage.</h2>
+            <h2 class="section-subheading text-uppercase"> Tap on picture to visit garage or get assess to other resources.</h2>
+            <h3 class="section-subheading text-muted">Explore our premium car collection or your one-stop solution for buying, selling, and renting cars.</h3>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <!-- Portfolio item 1-->
+                <div class="portfolio-item">
+                    <a class="portfolio-link" href="/store">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                        </div>
+                        <img class="img-fluid" src="static\images\pictures for homepage\car3.jpg" alt="Buy a car" />
+                    </a>
+                    <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">Cars for sale</div>
+                        <div class="portfolio-caption-subheading text-muted">Own it. Drive it.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <!-- Portfolio item 2-->
+                <div class="portfolio-item">
+                    <a class="portfolio-link" href="/rent">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                        </div>
+                        <img class="img-fluid" src="static\images\pictures for homepage\car1.jpg" alt="Rent a car" />
+                    </a>
+                    <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">Rent a car</div>
+                        <div class="portfolio-caption-subheading text-muted">Drive it. Flex on the road</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <!-- Portfolio item 3-->
+                <div class="portfolio-item">
+                    <a class="portfolio-link" href="/sell">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                        </div>
+                        <img class="img-fluid" src="static\images\pictures for homepage\car11.jpg" alt="Sell your car" />
+                    </a>
+                    <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">Sell your car</div>
+                        <div class="portfolio-caption-subheading text-muted">Sell Your Car with Confidence: Streamlined, Transparent, and Hassle-Free Transactions Await</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
+                <!-- Portfolio item 4-->
+                <div class="portfolio-item">
+                    <a class="portfolio-link" href="https://www.youtube.com/@nicecars05">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                        </div>
+                        <img class="img-fluid" src="static\images\car sales carossel\sale1.jpg" alt="Learn to drive" />
+                    </a>
+                    <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">Learn to drive</div>
+                        <div class="portfolio-caption-subheading text-muted">Know your car. Drive like a pro. The road is your field. Join our driving school and be the best.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
+                <!-- Portfolio item 5-->
+                <div class="portfolio-item">
+                    <a class="portfolio-link" href="https://www.youtube.com/@nicecars05">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                        </div>
+                        <img class="img-fluid" src="static\images\car sales carossel\b13.jpg" alt="Basic tutorials on your car" />
+                    </a>
+                    <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">Basic tutorials on your car</div>
+                        <div class="portfolio-caption-subheading text-muted">Learn basic skills like changing tyres. Fixing batteries for free.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <!-- Portfolio item 6-->
+                <div class="portfolio-item">
+                    <a class="portfolio-link" href="/car_maintenance">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                        </div>
+                        <img class="img-fluid" src="static\images\pictures\7.1.jpg" alt="Car maintenance" />
+                    </a>
+                    <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">Car maintenance</div>
+                        <div class="portfolio-caption-subheading text-muted">Rev Up Your Ride: Expert Care for Every Car</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Container adjustments */
+.page-section {
+    padding: 60px 0;
+}
+
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.portfolio-item:hover {
+    transform: scale(1.05);
+}
+
+/* Image adjustments */
+.portfolio-item img {
+    width: 100%;
+    height: 250px; /* Set height to ensure consistent size */
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Hover effect */
+.portfolio-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 8px;
+}
+
+.portfolio-item:hover .portfolio-hover {
+    opacity: 1;
+}
+
+.portfolio-hover-content i {
+    color: #fff;
+}
+
+.portfolio-caption {
+    padding-top: 15px;
+    text-align: center;
+}
+
+.portfolio-caption-heading {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.portfolio-caption-subheading {
+    font-size: 0.9rem;
+    color: #6c757d;
+
+</style>
+
+
+        <!-- Testimonials -->
+        <!-- Testimonial Carousel with Dark Background -->
+<div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" style="background-color: #fff; color: #fff; padding: 30px 0;">
+    <div class="carousel-inner">
+        <!-- Testimonial 1 -->
+        <div class="carousel-item active">
+            <div class="d-flex flex-column align-items-center text-center">
+                <img src="{% static 'images/ABE2.jpg' %}" class="rounded-circle mb-3" alt="Abraham Buxton" style="width: 150px; height: 150px;">
+                <h5 style="color: #000;">Abraham Buxton</h5>
+                <p class="text-muted" style="color: #ccc;">"NiceCars helped me find my dream car! The process was smooth, and the customer service was excellent!"</p>
+            </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="carousel-item">
+            <div class="d-flex flex-column align-items-center text-center">
+                <img src="{% static 'images/ABE2.jpg' %}" class="rounded-circle mb-3" alt="Jane Smith" style="width: 150px; height: 150px;">
+                <h5 style="color: #000;">Jane Smith</h5>
+                <p class="text-muted" style="color: #ccc;">"I rented a car for my wedding from NiceCars, and it was amazing! Highly recommend their services."</p>
+            </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="carousel-item">
+            <div class="d-flex flex-column align-items-center text-center">
+                <img src="{% static 'images/ABE2.jpg' %}" class="rounded-circle mb-3" alt="Michael Johnson" style="width: 150px; height: 150px;">
+                <h5 style="color: #000;">Michael Johnson</h5>
+                <p class="text-muted" style="color: #ccc;">"Selling my old car on NiceCars was hassle-free. Great platform with fair prices!"</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Carousel Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true" style="filter: invert(1);"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true" style="filter: invert(1);"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
+
+<style>
+    .timeline-image {
+    position: relative;
+    width: 150px; /* Adjust the size as needed */
+    height: 150px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 5px solid #007bff; /* Add a border color that matches your theme */
+}
+
+.timeline-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image fills the circle without stretching */
+    border-radius: 50%;
+}
+
+</style>
+
+
+
+        <!--  -->
+        <section class="page-section" id="CarContact">
+    <div class="container">
+    <div class="text-center">
+        <h2 class="section-heading text-uppercase">Contact Us</h2>
+        <h3 class="section-subheading text-muted">We're here to assist you with any questions or inquiries about our services. Reach out to us today!.</h3>
+    </div>
+
+<!-- Form Structure -->
+<form method="POST" action="{% url 'contact_form_submit' %}" data-sb-form-api-token="your-api-token">
+    {% csrf_token %}
+    <div class="row align-items-stretch mb-5">
+        <div class="col-md-6">
+            <div class="form-group">
+                <input class="form-control" id="name" name="name" type="text" placeholder="Your Name" required />
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="email" name="email" type="email" placeholder="Your Email" required />
+            </div>
+            <div class="form-group mb-md-0">
+                <input class="form-control" id="phone" name="phone" type="tel" placeholder="Your contact" required />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group form-group-textarea mb-md-0">
+                <textarea class="form-control" id="message" name="message" placeholder="Your Message" required></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+        <button class="btn btn-primary btn-xl text-uppercase" id="submitButton" type="submit">Send Message</button>
+    </div>
+</form>
+
+
+<style>
+    #contact
+    /* Contact Form Styles */
+#CarContact {
+    padding: 50px 0;
+    background-color: #f9f9f9;
+}
+
+#CarContact h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#CarContact h3 {
+    font-size: 1.25rem;
+    color: #6c757d;
+    margin-bottom: 40px;
+}
+
+/* Form Group Styles */
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    font-size: 16px;
+    box-shadow: none;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0px 0px 10px rgba(0, 123, 255, 0.2);
+}
+
+textarea.form-control {
+    height: 150px;
+    resize: none;
+}
+
+/* Button Styles */
+#submitButton {
+    background-color: #007bff; 
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    text-transform: uppercase;
+    border-radius: 50px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#submitButton:hover {
+    background-color: #ffc800;
+    cursor: pointer;
+}
+
+/* Responsive Form Styles */
+@media (max-width: 768px) {
+    #CarContact h2 {
+        font-size: 2rem;
+    }
+    
+    #CarContact h3 {
+        font-size: 1rem;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-control {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    #submitButton {
+        padding: 12px 25px;
+        font-size: 14px;
+    }
+}
+
+</style>
+
+</section>
+
+        <!-- Footer Section -->
+        
+<!-- Footer Section -->
+{% load static %}
+{% load static %}
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-top">
+            <h2 class="footer-logo">
+                <span style="color: red;">Duxt</span><span style="color: #007bff;">Cars</span>
+            </h2>
+        </div>
+        <div class="footer-links">
+            <div class="social-icons">
+                <a href="https://web.facebook.com/profile.php?id=61565896097137" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/YOUR_INSTAGRAM_PROFILE" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/105208352/admin/page-posts/published/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.youtube.com/@nicecars05" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+            </div>
+            <ul class="footer-nav">
+                <li><a href="{% url 'privacy' %}">Privacy Statement</a></li>
+                <li><a href="{% url 'termsandcondition' %}">Terms and Conditions</a></li>
+                <li><a href="{% url 'disclaimer' %}">Disclaimer</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 DuxtCars. All Rights Reserved.</p>
+            <div class="footer-logo">
+               <img src="{% static 'images/logo17.png' %}" alt="Corporate Partner Logo" />
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+        <!-- Portfolio Modals-->
+        <!-- Portfolio item 1 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="static/assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">Buy a car</h2>
+                                    <p class="item-intro text-muted">Own the cars you see and drive the car you want.</p>
+                                    <img class="img-fluid d-block mx-auto" src="static/assets/img/portfolio/11.jpg" alt="..." />
+                                    <p>Own the car you want and drive into your dreams. At DuxtCars we assist our clients have a joyful ride into their future. Buy from us. Buy from the best.</p>
+                                    <ul class="list-inline">
+                                        <li>
+                                            <strong>Client:</strong>
+                                            Threads
+                                        </li>
+                                        <li>
+                                            <strong>Category:</strong>
+                                            Buy a car
+                                        </li>
+                                    </ul>
+                                    <a href="{% url 'store' %}" class="btn btn-primary btn-xl text-uppercase" type="button">
+                                    <i class="fas fa-xmark me-1"></i>
+                                        Visit our shop
+                                    </a>
+
+                                    </button>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-xmark me-1"></i>
+                                        Close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio item 2 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="static/assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">Rent a car</h2>
+                                    <p class="item-intro text-muted">Rent it take it everywhere...</p>
+                                    <img class="img-fluid d-block mx-auto" src="static/assets/img/portfolio/12.jpg" alt="..." />
+                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <ul class="list-inline">
+                                        <li>
+                                            <strong>Client:</strong>
+                                            Explore
+                                        </li>
+                                        <li>
+                                            <strong>Category:</strong>
+                                            Graphic Design
+                                        </li>
+                                    </ul>
+                                    <a href="{% url 'rent' %}" class="btn btn-primary btn-xl text-uppercase" type="button">
+                                    <i class="fas fa-xmark me-1"></i>
+                                        Check out cars for renting
+                                    </a>
+
+                                    </button>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-xmark me-1"></i>
+                                        Close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio item 3 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="static/assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">Sell your car</h2>
+                                    <p class="item-intro text-muted">Sell Your Car with Confidence: Streamlined, Transparent, and Hassle-Free Transactions Await.</p>
+                                    <img class="img-fluid d-block mx-auto" src="static/assets/img/portfolio/13.jpg" alt="..." />
+                                    <p>Sell with Confidence: Looking to sell your car? We make it easy. Our team will assess your vehicle, offer a competitive price, and handle all the paperwork, ensuring a hassle-free experience from start to finish.</p>
+                                    <ul class="list-inline">
+                                        <li>
+                                            <strong>Client:</strong>
+                                            Finish
+                                        </li>
+                                        <li>
+                                            <strong>Category:</strong>
+                                            Identity
+                                        </li>
+                                    </ul>
+                                    <a href="{% url 'sell' %}" class="btn btn-primary btn-xl text-uppercase" type="button">
+                                    <i class="fas fa-xmark me-1"></i>
+                                        Proceed to sell your car
+                                    </a>
+
+                                    </button>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-xmark me-1"></i>
+                                        Close Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio item 4 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="static/assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">Driving School</h2>
+                                    <p class="item-intro text-muted">We give you the best skills.</p>
+                                    <img class="img-fluid d-block mx-auto" src="static/assets/img/portfolio/14.jpg" alt="..." />
+                                    <p>We connect you with top driving instructors in your area, ensuring you become a road pro with confidence.</p>
+                                    <ul class="list-inline">
+                                        <li>
+                                            <strong>Client:</strong>
+                                            Lines
+                                        </li>
+                                        <li>
+                                            <strong>Category:</strong>
+                                            Branding
+                                        </li>
+                                    </ul>
+                                    <a href="{% url 'store' %}" class="btn btn-primary btn-xl text-uppercase" type="button">
+                                    <i class="fas fa-xmark me-1"></i>
+                                        Apply for free
+                                    </a>
+
+                                    </button>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-xmark me-1"></i>
+                                        Close Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio item 5 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="static/assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">Free car tutorials & hacks</h2>
+                                    <p class="item-intro text-muted">Suscribe and follow our youtube handles as we teach you free car hacking tips.</p>
+                                    <img class="img-fluid d-block mx-auto" src="static/assets/img/portfolio/15.jpg" alt="..." />
+                                    <p>Learn basic car hacking tips about your car. ie what to do if you car stops in the middle of draw. How to change your flat tyres yourself etc...</p>
+                                    <ul class="list-inline">
+                                        <li>
+                                            <strong>Client:</strong>
+                                            Southwest
+                                        </li>
+                                        <li>
+                                            <strong>Category:</strong>
+                                            Website Design
+                                        </li>
+                                    </ul>
+                                    <a href="https://www.youtube.com/watch?v=PR81tImVfY8" class="btn btn-primary btn-xl text-uppercase" type="button">
+                                    <i class="fas fa-xmark me-1"></i>
+                                        Videos & tutorials
+                                    </a>
+
+                                    </button>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-xmark me-1"></i>
+                                        Close Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio item 6 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="static/assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">Car Service</h2>
+                                    <p class="item-intro text-muted">Rev Up Your Ride: Expert Care for Every Car</p>
+                                    <img class="img-fluid d-block mx-auto" src="static/assets/img/portfolio/16.jpg" alt="..." />
+                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <ul class="list-inline">
+                                        <li>
+                                            <strong>Client:</strong>
+                                            Window
+                                        </li>
+                                        <li>
+                                            <strong>Category:</strong>
+                                            Photography
+                                        </li>
+                                    </ul>
+                                    <a href="{% url 'store' %}" class="btn btn-primary btn-xl text-uppercase" type="button">
+                                    <i class="fas fa-xmark me-1"></i>
+                                        Automobile servicing
+                                    </a>
+
+                                    </button>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-xmark me-1"></i>
+                                        Close Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>
+{% endblock content %}

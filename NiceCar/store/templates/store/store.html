@@ -1,0 +1,181 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+    <!-- Add Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    
+    <style>
+        /* Modal Styles */
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            border-radius: 10px;
+            width: 40%;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-content h2 {
+            margin-bottom: 20px;
+        }
+
+        .modal-content .close {
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+        }
+
+        .modal-content .close:hover, 
+        .modal-content .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Form Styles */
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-top: 10px;
+        }
+
+        form label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        form input[type="text"], 
+        form input[type="email"], 
+        form input[type="tel"], 
+        form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        form button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        form button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive Form Styles */
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<div class="lead-section text-center">
+     <font color="red"> <h2><br> <b><b>Buy now🎄❄<br>Get your christmas Bogazy Bonus!!!</b></b><br></font></h2>
+</div>
+</form>
+
+
+<div class="row">
+    {% for product in products %}
+    <div class="col-lg-4 d-flex align-items-stretch"> <!-- Ensures cards stretch to equal height -->
+        <div class="card mb-4">
+            <!-- Image Section -->
+            <img class="card-img-top product-image" src="{{ product.imageURL }}" alt="{{ product.name }}">
+
+            <!-- Card Content -->
+            <div class="card-body">
+                <h5 class="card-title"><strong>{{ product.name }}</strong></h5>
+                <p class="card-text">{{ product.status }}</p>
+                <p class="card-text">{{ product.detail }}</p>
+            </div>
+
+            <!-- Card Footer -->
+            <div class="card-footer d-flex justify-content-between align-items-center">
+                <!-- Buy Button -->
+                <button data-product="{{ product.id }}" data-action="buy" class="btn btn-outline-secondary buy-btn" 
+                onclick="openBuyModal('{{ product.id }}', '{{ product.name }}')">Buy</button>
+
+                <!-- View Button -->
+                <a class="btn btn-outline-success" href="{% url 'product_detail' product.id %}">View</a>
+                
+                <!-- Price -->
+                <h6 class="text-muted mb-0"><strong>${{ product.price }}</strong></h6>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+   
+
+<!-- Modal HTML -->
+<div id="buyModal" class="modal" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">
+    <div class="modal-content">
+        <span class="close" onclick="closeBuyModal()">&times;</span>
+        <h2>Interested in buying <span id="carName"></span>?</h2>
+        <form id="buyForm" method="POST" action="/submit-interest/">
+            {% csrf_token %}
+            <input type="hidden" id="productId" name="product_id" value="">
+            <div>
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="phone">Your Phone:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <button type="submit">Submit Interest</button>
+        </form>
+    </div>
+</div>
+
+
+
+
+<!-- JavaScript to handle modal behavior -->
+<script>
+    // Function to open the modal with product details
+    function openBuyModal(productId, productName) {
+        var modal = document.getElementById("buyModal");
+        modal.style.display = "block";
+        document.getElementById("productId").value = productId;
+        document.getElementById("carName").textContent = productName;
+    }
+
+    // Function to close the modal
+    function closeBuyModal() {
+        var modal = document.getElementById("buyModal");
+        modal.style.display = "none";
+    }
+
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+        var modal = document.getElementById("buyModal");
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+{% endblock content %}

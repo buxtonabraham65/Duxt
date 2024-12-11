@@ -1,0 +1,187 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Lead Section -->
+
+<div class="lead-section text-center">
+        <font color="red"> <h2><br> <b><b>Rent now🎄❄<br>Get your christmas Bogazy Bonus!!!</b></b><br></font></h2><br>
+</div>
+
+<!-- Cars for Rent -->
+<div class="row">
+    {% for rent in rents %}
+    <div class="col-lg-4 d-flex align-items-stretch">
+        <div class="card mb-4">
+             <!-- Image Section -->
+            <img class="card-img-top rent-image" src="{{ rent.imageURL }}" alt="{{ rent.name }}">
+
+            <!-- Card Content -->
+            <div class="card-body">
+                <h5 class="card-title"><strong>{{ rent.name }}</strong></h5>
+                <p class="card-text">{{ rent.status }}</p>
+                <p class="card-text">{{ rent.detail }}</p>
+            </div>
+
+            <!-- Card Footer -->
+            <div class="card-footer d-flex justify-content-between align-items-center">
+                <!-- Buy Button -->
+                
+                <button class="btn btn-outline-secondary" 
+                onclick="openRentModal('{{ rent.id }}', '{{ rent.name }}')">Rent</button>
+            <a class="btn btn-outline-success" a href="{% url 'rent_detail' rent.id %}">View</a>
+            <h20 style="display: inline-block; float: right"><strong>${{ rent.price }} / day</strong></h20>
+                
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+        
+       
+           
+
+<!-- Rent Modal -->
+<div id="rentModal" class="modal" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">
+    <div class="modal-content" style="background-color: white; margin: 10% auto; padding: 20px; border: 1px solid #888; width: 40%;">
+        <span class="close" onclick="closeRentModal()" style="float:right;cursor:pointer;">&times;</span>
+        <h2>Interested in renting <span id="carName"></span>?</h2>
+        <form method="POST" action="{% url 'submit-rent-interest' %}">
+            {% csrf_token %}
+            <input type="hidden" id="rentCarId" name="rentCarId">
+            <div>
+                <label for="renterName">Your Name:</label>
+                <input type="text" id="renterName" name="renterName" required>
+            </div>
+            <div>
+                <label for="renterContact">Contact Info:</label>
+                <input type="text" id="renterContact" name="renterContact" required>
+            </div>
+            <div>
+                <label for="rentDuration">Duration of Rent (in days):</label>
+                <input type="number" id="rentDuration" name="rentDuration" required>
+            </div>
+            <button type="submit">Submit Rent Request</button>
+        </form>
+    </div>
+</div>
+
+<!-- JavaScript to handle modal behavior and form submission -->
+<script>
+    // Function to open the modal with car details
+    function openRentModal(carId, carName) {
+        var modal = document.getElementById("rentModal");
+        modal.style.display = "block"; // Show the modal
+        document.getElementById("carName").textContent = carName; // Update car name in the modal
+        document.getElementById("rentCarId").value = carId; // Set car ID in hidden input
+    }
+
+    // Function to close the modal
+    function closeRentModal() {
+        var modal = document.getElementById("rentModal");
+        modal.style.display = "none"; // Hide the modal
+    }
+
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+        var modal = document.getElementById("rentModal");
+        if (event.target == modal) {
+            closeRentModal(); // Close modal when clicking outside
+        }
+    }
+</script>
+
+<style>
+/* Paste the CSS code here */
+/* Modal Background */
+#rentModal {
+    display: none; /* Hide the modal by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 1000; /* Ensures modal is above other content */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* Center the modal */
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px; /* Rounded corners */
+    width: 40%; /* Width of the modal */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+}
+
+/* Close Button */
+.modal-content .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-content .close:hover,
+.modal-content .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Form Container */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Spacing between form elements */
+}
+
+/* Form Labels */
+form label {
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Form Inputs */
+form input[type="text"],
+form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px; /* Rounded corners */
+    box-sizing: border-box;
+    font-size: 14px;
+    margin-top: 5px; /* Space between label and input */
+}
+
+/* Submit Button */
+form button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* Smooth background transition */
+}
+
+form button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Responsive Modal */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 80%; /* Reduce width for smaller screens */
+    }
+}
+
+</style>
+
+
+{% endblock content %}
