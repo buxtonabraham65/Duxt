@@ -140,14 +140,7 @@ EMAIL_HOST_USER = 'buxtoncars2@gmail.com'  # Replace with your email
 EMAIL_HOST_PASSWORD = 'gljsrxkbstwixyqu'  # Replace with your email password or app-specific password
 DEFAULT_FROM_EMAIL = 'buxtoncars2@gmail.com'
 
-# Updating django settings for https
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-SECURE_HSTS_SECONDS = 31536000  # One year
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
-SECURE_BROWSER_XSS_FILTER = True
+
 
 
 
