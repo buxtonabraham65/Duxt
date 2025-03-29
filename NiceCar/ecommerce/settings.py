@@ -136,9 +136,14 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 
-EMAIL_HOST_USER = 'buxtoncars2@gmail.com'  # Replace with your email
-EMAIL_HOST_PASSWORD = 'gljsrxkbstwixyqu'  # Replace with your email password or app-specific password
-DEFAULT_FROM_EMAIL = 'buxtoncars2@gmail.com'
+EMAIL_HOST_USER = 'duxtcars@gmail.com'  # Replace with your email
+EMAIL_HOST_PASSWORD = 'qogclksoczozqrmb'  # Replace with your email password or app-specific password
+DEFAULT_FROM_EMAIL = 'duxtcars@gmail.com'
+
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
 
 
 
