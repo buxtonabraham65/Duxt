@@ -26,7 +26,7 @@
                 <button class="btn btn-outline-secondary" 
                 onclick="openRentModal('{{ rent.id }}', '{{ rent.name }}')">Rent</button>
             <a class="btn btn-outline-success" a href="{% url 'rent_detail' rent.id %}">View</a>
-            <h20 style="display: inline-block; float: right"><strong>GH₵{{ rent.price }} / day</strong></h20>
+            <h20 style="display: inline-block; float: right"><strong>${{ rent.price }} / day</strong></h20>
                 
             </div>
         </div>
