@@ -2,7 +2,10 @@
 {% load static %}
 <html>
 <head>
-	<title>AbeCars</title>
+	<title>DuxtCars</title>
+
+	<!-- Favicon (DuxtCars Logo) -->
+	<link rel="icon" type="image/png" href="{% static 'images/logo17.png' %}" />
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
 
@@ -10,10 +13,7 @@
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
-
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-
-	
 
 	<script type="text/javascript">
 		var user = '{{request.user}}'
@@ -36,22 +36,16 @@
 		var csrftoken = getToken('csrftoken')
 
 		function getCookie(name) {
-		    // Split cookie string and get all individual name=value pairs in an array
 		    var cookieArr = document.cookie.split(";");
 
-		    // Loop through the array elements
 		    for(var i = 0; i < cookieArr.length; i++) {
 		        var cookiePair = cookieArr[i].split("=");
 
-		        /* Removing whitespace at the beginning of the cookie name
-		        and compare it with the given string */
 		        if(name == cookiePair[0].trim()) {
-		            // Decode the cookie value and return
 		            return decodeURIComponent(cookiePair[1]);
 		        }
 		    }
 
-		    // Return null if not found
 		    return null;
 		}
 		var cart = JSON.parse(getCookie('cart'))
@@ -62,7 +56,6 @@
 			document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
 		}
 		console.log('Cart:', cart)
-	
 	</script>
 
 </head>
@@ -70,8 +63,8 @@
 	<head>
     <style>
         .navbar-brand img {
-            width: 50px; /* Adjust width as needed */
-            height: auto; /* Maintain aspect ratio */
+            width: 50px;
+            height: auto;
         }
     </style>
 </head>
@@ -89,47 +82,39 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto text-uppercase py-4 py-lg-0" style="margin-right: 100px;">
             <li class="nav-item ms-auto" style="margin-right: 50px;">
-        <a class="nav-link" href="{% url 'store' %}"><font color="white">Buy</font></a>
-    </li>
-    <li class="nav-item" style="margin-right: 50px;">
-        <a class="nav-link custom-link" href="{% url 'sell' %}"><font color="white">Sell</font></a>
-    </li>
-    <li class="nav-item  ms-auto" style="margin-right: 50px;">
-        <a class="nav-link custom-link" href="{% url 'rent' %}"><font color="white">Rent</font></a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link custom-link" href="{% url 'car_maintenance' %}"><font color="white">Car Maintenance</font></a>
-    </li>
+                <a class="nav-link" href="{% url 'store' %}"><font color="white">Buy</font></a>
+            </li>
+            <li class="nav-item" style="margin-right: 50px;">
+                <a class="nav-link custom-link" href="{% url 'sell' %}"><font color="white">Sell</font></a>
+            </li>
+            <li class="nav-item  ms-auto" style="margin-right: 50px;">
+                <a class="nav-link custom-link" href="{% url 'rent' %}"><font color="white">Rent</font></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link custom-link" href="{% url 'car_maintenance' %}"><font color="white">Car Maintenance</font></a>
+            </li>
+        </ul>
     </div>
 </nav>
 
+<div class="container">
+    <br>
+    {% block content %}
+    {% endblock content %}
 </div>
 
-</nav>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 
-     <div class="container">
-            <br>
-            {% block content %}
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-dycpIR1fuNo7Rjey0WItUMv7F2B10+4D8U/Z4/N7I5NYXGphBaFP0EwKNV6Tni5ITJWjkjVfBo2DpvKxbIj5zg==" crossorigin="anonymous" />
 
-            {% endblock content %}
-         </div>
-
-
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-dycpIR1fuNo7Rjey0WItUMv7F2B10+4D8U/Z4/N7I5NYXGphBaFP0EwKNV6Tni5ITJWjkjVfBo2DpvKxbIj5zg==" crossorigin="anonymous" />
-
-
-	<script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
 
 <br><br><br>
+
 
 
 
