@@ -177,22 +177,29 @@ def processOrder(request):
 # views.py
 def submit_interest(request):
     if request.method == 'POST':
-        # Get form data
         product_id = request.POST.get('product_id')
         name = request.POST.get('name')
         email = request.POST.get('email')
         message = request.POST.get('message')
-        
+
+        # Get product details
+        product = get_object_or_404(Product, id=product_id)
+        product_name = product.name
+        product_price = product.price
+        product_image = product.images.first().image.url if product.images.exists() else "No image available"
+
         # Email content
-        subject = f"New Interest in Car ID {product_id} from Buy Page"
+        subject = f"New Interest in {product_name} from Buy Page"
         email_message = f"""
         Name: {name}
         Email: {email}
-        Car ID: {product_id}
+        Car Name: {product_name}
+        Price: {product_price}
         Message: {message}
+        Image: {product_image}
         This form was submitted from the buy.html page.
         """
-        
+
         # Send the email
         send_mail(
             subject,
@@ -201,9 +208,8 @@ def submit_interest(request):
             [settings.DEFAULT_FROM_EMAIL],  # Your email address
             fail_silently=False,
         )
-        
-        # Redirect or render a success message
-        return render(request, 'store/success.html', {'message': 'Our team will contact you soon. Thank you!'})
+
+        return render(request, 'store/success.html', {'message': 'Congratulations! Our team will contact you soon.'})
     else:
         return redirect('store')
 
@@ -216,22 +222,29 @@ from django.conf import settings
 
 def submit_rent_interest(request):
     if request.method == 'POST':
-        # Get form data
         rent_car_id = request.POST.get('rentCarId')
         renter_name = request.POST.get('renterName')
         renter_contact = request.POST.get('renterContact')
         rent_duration = request.POST.get('rentDuration')
 
+        # Get rent car details
+        rent_car = get_object_or_404(Rent, id=rent_car_id)
+        rent_car_name = rent_car.name
+        rent_car_price = rent_car.price
+        rent_car_image = rent_car.images.first().image.url if rent_car.images.exists() else "No image available"
+
         # Email content
-        subject = f"New Rent Interest in Car ID {rent_car_id} from Rent Page"
+        subject = f"New Rent Interest in {rent_car_name} from Rent Page"
         email_message = f"""
         Name: {renter_name}
         Contact Info: {renter_contact}
-        Car ID: {rent_car_id}
+        Car Name: {rent_car_name}
+        Price: {rent_car_price}
         Duration of Rent (in days): {rent_duration}
+        Image: {rent_car_image}
         This form was submitted from the rent.html page.
         """
-        
+
         # Send the email
         send_mail(
             subject,
@@ -241,7 +254,6 @@ def submit_rent_interest(request):
             fail_silently=False,
         )
 
-        # Redirect or render a success message
         return render(request, 'store/success.html', {'message': 'Our team will contact you soon. Thank you!'})
     else:
         return redirect('store')
