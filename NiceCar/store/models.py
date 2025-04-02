@@ -42,7 +42,7 @@ class Product(models.Model):
 	image = models.ImageField(upload_to = 'product_image/', null=True, blank=True)
 	STATUS_CHOICES = [
 		('NEW', 'Brand New'),
-		('Foreign Used', 'Foreign Used'),
+		('Lightly Used (Foreign)', 'Lightly Used (Foreign)'),
 		('Other', 'Other'),					
 	]
 	status = models.CharField(max_length= 20, null= True, choices=STATUS_CHOICES)
